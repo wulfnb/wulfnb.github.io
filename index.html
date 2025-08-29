@@ -41,7 +41,6 @@
             color: var(--green);
             text-decoration: none;
             transition: var(--transition);
-            cursor: none;
         }
 
         a:hover {
@@ -56,7 +55,7 @@
             padding: 0 20px;
         }
 
-        /* Custom Cursor */
+        /* New Custom Cursor */
         .cursor {
             position: fixed;
             width: 20px;
@@ -66,19 +65,29 @@
             mix-blend-mode: difference;
             pointer-events: none;
             z-index: 9999;
-            transition: transform 0.1s ease;
+            transition: transform 0.15s ease, background-color 0.2s ease;
         }
 
-        .cursor-follower {
+        .cursor-ring {
             position: fixed;
             width: 40px;
             height: 40px;
-            border: 1px solid var(--green);
+            border: 2px solid var(--green);
             border-radius: 50%;
             pointer-events: none;
             z-index: 9998;
-            transition: transform 0.4s ease, opacity 0.4s ease;
-            opacity: 0.5;
+            transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
+        }
+
+        .cursor-dot {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background-color: var(--green);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9997;
+            transition: transform 0.2s ease;
         }
 
         /* Header */
@@ -121,14 +130,6 @@
             font-family: var(--font-mono);
             font-size: 0.9rem;
             padding: 0.5rem;
-            counter-increment: item 1;
-        }
-
-        .nav-links a::before {
-            content: "0" counter(item) ".";
-            margin-right: 5px;
-            color: var(--green);
-            font-size: 0.8rem;
         }
 
         .nav-links a:hover {
@@ -142,7 +143,6 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            position: relative;
         }
 
         .hero h1 {
@@ -174,7 +174,6 @@
             font-family: var(--font-mono);
             font-size: 0.9rem;
             transition: var(--transition);
-            cursor: none;
         }
 
         .btn:hover {
@@ -458,6 +457,66 @@
             margin-bottom: 1rem;
         }
 
+        /* Certificates */
+        .certificates {
+            background-color: var(--light-navy);
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .certificate-card {
+            position: relative;
+            background-color: var(--lightest-navy);
+            border-radius: 4px;
+            padding: 2rem;
+            transition: var(--transition);
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .certificate-card .cert-icon {
+            color: var(--green);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .certificate-card h3 {
+            margin-bottom: 1rem;
+            color: var(--lightest-slate);
+        }
+
+        .certificate-card p {
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .certificate-card .credential {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--green);
+            margin-bottom: 1rem;
+        }
+
+        .certificate-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .certificate-links a {
+            color: var(--lightest-slate);
+            font-size: 1.2rem;
+        }
+
+        .certificate-links a:hover {
+            color: var(--green);
+        }
+
         /* Contact */
         .contact {
             text-align: center;
@@ -520,16 +579,17 @@
                 cursor: auto;
             }
             
-            .cursor, .cursor-follower {
+            .cursor, .cursor-ring, .cursor-dot {
                 display: none;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Custom Cursor -->
+    <!-- New Custom Cursor -->
     <div class="cursor"></div>
-    <div class="cursor-follower"></div>
+    <div class="cursor-ring"></div>
+    <div class="cursor-dot"></div>
 
     <!-- Header -->
     <header>
@@ -543,6 +603,7 @@
                     <li><a href="#experience">Experience</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#education">Education</a></li>
+                    <li><a href="#certificates">Certificates</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -553,7 +614,7 @@
     <section class="hero">
         <div class="container">
             <h1>Hi, my name is</h1>
-            <h2>Noufal Babu Adam Shaw.</h2>
+            <h2>NOUFAL BABU A S.</h2>
             <h2>I build things for the web.</h2>
             <p>
                 I'm a senior software engineer specializing in building exceptional digital experiences. 
@@ -595,7 +656,7 @@
                 </div>
                 <div class="about-image">
                     <div class="wrapper">
-                        <img src="my_photo.jpg" alt="Noufal Babu Adam Shaw">
+                        <img src="my_photo.jpg" alt="NOUFAL BABU A S">
                     </div>
                 </div>
             </div>
@@ -659,7 +720,7 @@
     <!-- Projects Section -->
     <section id="projects">
         <div class="container">
-            <h2>Projects I've Built</h2>
+            <h2>Projects</h2>
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="folder">
@@ -729,11 +790,43 @@
                 <p class="institution">University of Calicut</p>
                 <p class="date">June 2011 - March 2014 | GPA: 65%</p>
             </div>
-            
-            <div class="education-item">
-                <h3>Google Cloud Certified - Cloud Digital Leader</h3>
-                <p class="institution">Google Cloud</p>
-                <p class="date">Credential ID: SujznC</p>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates" class="certificates">
+        <div class="container">
+            <h2>Certificates & Achievements</h2>
+            <div class="certificates-grid">
+                <div class="certificate-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Google Cloud Certified - Cloud Digital Leader</h3>
+                    <p class="credential">Credential ID: SujznC</p>
+                    <p>Validated expertise in Google Cloud technologies and cloud business concepts.</p>
+                    <div class="certificate-links">
+                        <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <div class="certificate-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Vulnerability Reduction Achievement</h3>
+                    <p>Reduced security vulnerabilities in production docker images from 1200+ to under 50.</p>
+                    <p>Led a team of 3 engineers to successfully identify and fix critical security issues.</p>
+                </div>
+                
+                <div class="certificate-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>Cost Optimization</h3>
+                    <p>Redesigned notification system and resolved concurrency issues, cutting SMS costs by 66%.</p>
+                    <p>Optimized cloud infrastructure resulting in significant cost savings for the organization.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -759,7 +852,7 @@
                 <a href="#"><i class="fab fa-twitter"></i></a>
                 <a href="#"><i class="fab fa-dev"></i></a>
             </div>
-            <p>Designed & Built by Noufal Babu Adam Shaw</p>
+            <p>Designed & Built by NOUFAL BABU A S</p>
         </div>
     </footer>
 
@@ -798,28 +891,51 @@
             });
         });
 
-        // Custom cursor effect
+        // New custom cursor effect
         if (window.matchMedia("(min-width: 769px)").matches) {
             const cursor = document.querySelector('.cursor');
-            const cursorFollower = document.querySelector('.cursor-follower');
+            const cursorRing = document.querySelector('.cursor-ring');
+            const cursorDot = document.querySelector('.cursor-dot');
             
             document.addEventListener('mousemove', (e) => {
                 cursor.style.transform = `translate3d(${e.clientX - 10}px, ${e.clientY - 10}px, 0)`;
-                cursorFollower.style.transform = `translate3d(${e.clientX - 20}px, ${e.clientY - 20}px, 0)`;
+                cursorRing.style.transform = `translate3d(${e.clientX - 20}px, ${e.clientY - 20}px, 0)`;
+                cursorDot.style.transform = `translate3d(${e.clientX - 2}px, ${e.clientY - 2}px, 0)`;
             });
             
             // Cursor effects on interactive elements
-            const interactiveElements = document.querySelectorAll('a, button, .btn, .tab, .project-card');
+            const interactiveElements = document.querySelectorAll('a, button, .btn, .tab, .project-card, .certificate-card');
             
             interactiveElements.forEach(element => {
                 element.addEventListener('mouseenter', () => {
                     cursor.style.transform = 'scale(1.5)';
-                    cursorFollower.style.transform = 'scale(1.3)';
+                    cursorRing.style.transform = 'scale(1.3)';
+                    cursorRing.style.borderColor = 'var(--lightest-slate)';
+                    cursorRing.style.width = '30px';
+                    cursorRing.style.height = '30px';
                 });
                 
                 element.addEventListener('mouseleave', () => {
                     cursor.style.transform = 'scale(1)';
-                    cursorFollower.style.transform = 'scale(1)';
+                    cursorRing.style.transform = 'scale(1)';
+                    cursorRing.style.borderColor = 'var(--green)';
+                    cursorRing.style.width = '40px';
+                    cursorRing.style.height = '40px';
+                });
+            });
+            
+            // Special effect for buttons
+            const buttons = document.querySelectorAll('.btn');
+            
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', () => {
+                    cursor.style.backgroundColor = 'var(--lightest-slate)';
+                    cursorRing.style.borderWidth = '3px';
+                });
+                
+                button.addEventListener('mouseleave', () => {
+                    cursor.style.backgroundColor = 'var(--green)';
+                    cursorRing.style.borderWidth = '2px';
                 });
             });
         }
