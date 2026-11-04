@@ -2,7 +2,7 @@
   "response": [
     {
       "buildtype": "Unofficial",
-      "download": "https://downloads.sourceforge.net/project/lyraos/lisa/Lyra-1.0-lisa-20261104-1505.zip",
+      "download": "https://downloads.sourceforge.net/project/lyraos/lisa/20261104-1505/Lyra-1.0-lisa-20261104-1505.zip",
       "filename": "Lyra-1.0-lisa-20261104-1505.zip",
       "maintainer": "wulfnb",
       "os_patch_level": "2026-10-01",
