@@ -8,3 +8,4 @@ Lyra 1.0 - 2026-11-04
 - Screen cast (Wi-Fi Display) fixed for the Android 17 audio interfaces
 - Updates install over the previous build and keep your data
 - Signed with Lyra's own release keys
+- Lyra names everywhere: boot animation picker, version info, Settings entry and easter egg
