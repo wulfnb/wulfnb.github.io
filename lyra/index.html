@@ -102,8 +102,10 @@
     background: var(--cyan); border-radius: 50%; box-shadow: 0 0 10px var(--cyan);
   }
 
+  .pre { margin: 6px 0 0 20px; }
+  .pre li + li { margin-top: 4px; }
   .steps { counter-reset: s; list-style: none; display: grid; gap: 14px; }
-  .steps li { counter-increment: s; padding-left: 46px; position: relative; }
+  .steps li { counter-increment: s; padding-left: 46px; position: relative; min-width: 0; }
   .steps li::before {
     content: counter(s); position: absolute; left: 0; top: 0; width: 30px; height: 30px; border-radius: 50%;
     display: grid; place-items: center; font-size: 14px; font-weight: 500;
@@ -113,7 +115,7 @@
   code { background: var(--bg-2); padding: 1px 6px; border-radius: 6px; border: 1px solid var(--line); }
   pre {
     background: var(--bg-2); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px;
-    overflow-x: auto; line-height: 1.6; margin-top: 10px; color: #cfd2ef;
+    overflow-x: auto; max-width: 100%; line-height: 1.6; margin-top: 10px; color: #cfd2ef;
   }
   .note {
     margin-top: 22px; padding: 14px 18px; border-radius: 12px;
@@ -235,21 +237,37 @@
     <div class="wrap">
       <h2>Install</h2>
       <h3>Before you start</h3>
-      <p>You need an unlocked bootloader, <code>adb</code> and <code>fastboot</code> on your computer, and a LineageOS recovery on the phone. The LineageOS install guide for your device covers unlocking and flashing the recovery, for example the <a href="https://wiki.lineageos.org/devices/lisa/install">guide for lisa</a>.</p>
+      <ul class="pre">
+        <li>An unlocked bootloader. On Xiaomi phones this is done with the official Mi Unlock tool, which erases the phone.</li>
+        <li><a href="https://developer.android.com/tools/releases/platform-tools">Android platform-tools</a> (<code>adb</code> and <code>fastboot</code>) on your computer.</li>
+        <li>A backup of everything on the phone. The first install formats it.</li>
+      </ul>
 
-      <h3 style="margin-top:28px">Flash Lyra (lisa)</h3>
+      <h3 style="margin-top:28px">Download (lisa)</h3>
+      <p>From <a href="https://sourceforge.net/projects/lyraos/files/lisa/">SourceForge</a>, get the four files of the latest build and check them against the <code>.sha256</code> files next to them:</p>
+      <pre>Lyra-1.0-lisa-20261104-1405.zip
+Lyra-1.0-lisa-20261104-1405-boot.img
+Lyra-1.0-lisa-20261104-1405-vendor_boot.img
+Lyra-1.0-lisa-20261104-1405-dtbo.img</pre>
+      <p>The three images are Lyra's recovery. It trusts Lyra's signing key, so the install runs without a signature warning.</p>
+
+      <h3 style="margin-top:28px">First install</h3>
       <ol class="steps" style="margin-top:14px">
-        <li>Reboot to the bootloader, switch to the slot that holds the recovery and start it:
+        <li>Reboot to the bootloader and flash Lyra's recovery:
           <pre>adb reboot bootloader
-fastboot --set-active=b
+fastboot flash boot        Lyra-1.0-lisa-20261104-1405-boot.img
+fastboot flash vendor_boot Lyra-1.0-lisa-20261104-1405-vendor_boot.img
+fastboot flash dtbo        Lyra-1.0-lisa-20261104-1405-dtbo.img
 fastboot reboot recovery</pre></li>
-        <li>First install only: choose <em>Factory reset → Format data</em>. Updates skip this step.</li>
+        <li>In Lyra recovery choose <em>Factory reset → Format data</em> and confirm.</li>
         <li>Choose <em>Apply update → Apply from ADB</em>, then on the computer:
-          <pre>adb sideload Lyra-1.0-lisa-20261104-1405.zip</pre>
-          Get the zip from <a href="https://sourceforge.net/projects/lyraos/files/lisa/">SourceForge</a> and check it against the <code>.sha256</code> file next to it.</li>
-        <li>When it asks to reboot to recovery, choose <em>No</em>, then <em>Reboot system now</em>.</li>
+          <pre>adb sideload Lyra-1.0-lisa-20261104-1405.zip</pre></li>
+        <li>When it asks to reboot to recovery, choose <em>No</em>, then <em>Reboot system now</em>. The first boot takes a few minutes.</li>
       </ol>
-      <div class="note"><strong>Updating keeps your data.</strong> Once Lyra is installed, new builds show up in <em>Settings → System → Updater</em> and install over the previous one without wiping anything. Only the first install, coming from another ROM, needs a format.</div>
+
+      <h3 style="margin-top:28px">Updates</h3>
+      <p>New builds appear in <em>Settings → System → Updater</em>. Download, install, reboot. You can also sideload an update from Lyra recovery (<code>adb reboot recovery</code>, then <em>Apply from ADB</em>) without formatting.</p>
+      <div class="note"><strong>Updating keeps your data.</strong> Only the first install, coming from another ROM, needs a format.</div>
     </div>
   </section>
 
