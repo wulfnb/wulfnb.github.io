@@ -9,3 +9,4 @@ Lyra 1.0 - 2026-11-04
 - Updates install over the previous build and keep your data
 - Signed with Lyra's own release keys
 - Lyra names and icons everywhere: boot animation picker, version info, Settings, About, status bar logo and easter egg
+- Updater and changelog read from raw.githubusercontent.com, so update checks work whatever domain the page uses

@@ -2,14 +2,14 @@
   "response": [
     {
       "buildtype": "Unofficial",
-      "download": "https://downloads.sourceforge.net/project/lyraos/lisa/20261104-1505/Lyra-1.0-lisa-20261104-1505.zip",
-      "filename": "Lyra-1.0-lisa-20261104-1505.zip",
+      "download": "https://downloads.sourceforge.net/project/lyraos/lisa/20261104-1541/Lyra-1.0-lisa-20261104-1541.zip",
+      "filename": "Lyra-1.0-lisa-20261104-1541.zip",
       "maintainer": "wulfnb",
       "os_patch_level": "2026-10-01",
       "os_sdk_level": 37,
-      "sha256": "51a530eeb3e4dbdc7ac44f713a35f7bfa44f0e360bcde0b8e912d4472ff08f15",
-      "size": 3151210409,
-      "timestamp": 1793804757,
+      "sha256": "b8f7440c7eef1287e8e1cfa33425bca419750e14c90af69cebf874e79c058511",
+      "size": 3151206777,
+      "timestamp": 1793806905,
       "version": "Lyra-1.0"
     }
   ]

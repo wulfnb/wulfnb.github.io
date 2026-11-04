@@ -218,7 +218,7 @@
           <div class="dev-meta"><code>lisa</code> · maintained by <a href="https://github.com/wulfnb">wulfnb</a></div>
           <div class="dev-meta">Lyra 1.0 · Android 17</div>
           <div class="dev-links">
-            <a class="btn primary" href="https://sourceforge.net/projects/lyraos/files/lisa/20261104-1505/">Download</a>
+            <a class="btn primary" href="https://sourceforge.net/projects/lyraos/files/lisa/20261104-1541/">Download</a>
             <a class="dev-link" href="https://github.com/wulfnb/lisa-android17-bringup">Bring-up notes</a>
           </div>
         </div>
@@ -244,24 +244,24 @@
       </ul>
 
       <h3 style="margin-top:28px">Download (lisa)</h3>
-      <p>From the <a href="https://sourceforge.net/projects/lyraos/files/lisa/20261104-1505/">latest build's folder on SourceForge</a> (each build has its own dated folder), get the four files and check them against the <code>.sha256</code> files next to them:</p>
-      <pre>Lyra-1.0-lisa-20261104-1505.zip
-Lyra-1.0-lisa-20261104-1505-boot.img
-Lyra-1.0-lisa-20261104-1505-vendor_boot.img
-Lyra-1.0-lisa-20261104-1505-dtbo.img</pre>
+      <p>From the <a href="https://sourceforge.net/projects/lyraos/files/lisa/20261104-1541/">latest build's folder on SourceForge</a> (each build has its own dated folder), get the four files and check them against the <code>.sha256</code> files next to them:</p>
+      <pre>Lyra-1.0-lisa-20261104-1541.zip
+Lyra-1.0-lisa-20261104-1541-boot.img
+Lyra-1.0-lisa-20261104-1541-vendor_boot.img
+Lyra-1.0-lisa-20261104-1541-dtbo.img</pre>
       <p>The three images are Lyra's recovery. It trusts Lyra's signing key, so the install runs without a signature warning.</p>
 
       <h3 style="margin-top:28px">First install</h3>
       <ol class="steps" style="margin-top:14px">
         <li>Reboot to the bootloader and flash Lyra's recovery:
           <pre>adb reboot bootloader
-fastboot flash boot        Lyra-1.0-lisa-20261104-1505-boot.img
-fastboot flash vendor_boot Lyra-1.0-lisa-20261104-1505-vendor_boot.img
-fastboot flash dtbo        Lyra-1.0-lisa-20261104-1505-dtbo.img
+fastboot flash boot        Lyra-1.0-lisa-20261104-1541-boot.img
+fastboot flash vendor_boot Lyra-1.0-lisa-20261104-1541-vendor_boot.img
+fastboot flash dtbo        Lyra-1.0-lisa-20261104-1541-dtbo.img
 fastboot reboot recovery</pre></li>
         <li>In Lyra recovery choose <em>Factory reset → Format data</em> and confirm.</li>
         <li>Choose <em>Apply update → Apply from ADB</em>, then on the computer:
-          <pre>adb sideload Lyra-1.0-lisa-20261104-1505.zip</pre></li>
+          <pre>adb sideload Lyra-1.0-lisa-20261104-1541.zip</pre></li>
         <li>When it asks to reboot to recovery, choose <em>No</em>, then <em>Reboot system now</em>. The first boot takes a few minutes.</li>
       </ol>
 
@@ -284,6 +284,7 @@ fastboot reboot recovery</pre></li>
           <li>Screen cast (Wi-Fi Display) fixed for the Android 17 audio interfaces</li>
           <li>Signed with Lyra's own release keys</li>
           <li>Lyra names and icons everywhere: boot animation picker, version info, Settings, About, status bar logo and easter egg</li>
+          <li>Update checks work reliably (feed served directly from GitHub)</li>
           <li>Updates install over the previous build and keep your data, and arrive through the Updater app</li>
         </ul>
       </div>
