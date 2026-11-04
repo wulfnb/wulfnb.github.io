@@ -1,3 +1,16 @@
 {
-  "response": []
+  "response": [
+    {
+      "buildtype": "Unofficial",
+      "download": "https://downloads.sourceforge.net/project/lyraos/lisa/Lyra-1.0-lisa-20261104-signed.zip",
+      "filename": "Lyra-1.0-lisa-20261104-signed.zip",
+      "maintainer": "wulfnb",
+      "os_patch_level": "2026-10-01",
+      "os_sdk_level": 37,
+      "sha256": "10402d661f4c92f64041706e203913fcbb543256b099c55e483957b559988a99",
+      "size": 3151218469,
+      "timestamp": 1793798347,
+      "version": "Lyra-1.0"
+    }
+  ]
 }
